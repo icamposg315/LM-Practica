@@ -1,20 +1,32 @@
+
 /**
  * 
  * TIC TAC TOE
  */
 
+/**
+ * COSAS A IMPLEMENTAR:
+ * - No poner mas fichas
+ * - Contador de puntuación por equipo
+ * - Reinicio tablero para volver a jugar
+ * - Mostrar color línea ganadora
+ * - Contador de tiempo para cambiar turno si se agota el tiempo
+ * - Unificar dos funciones que hagan lo mismo, en una (Ganar_X y Ganar_O en una funcion ganador(X, O))
+ * - Comentario en las cabeceras de las funciones (@param, @return)
+ * - Creación de las variables arriba del código (Buenas prácticas con variables)
+ * - No errores en consola
+ * - Estilos (Diseño ingenioso)
+ * - GitHub
+ */
+
+
 let jugador1 = 'X';
 let jugador2 = 'O';
-
-let turno = true;
-let turno2 = false;
 
 /**Utilizamos push para rellenar el array con las posiciones que se van dibujando, posteriormente se compara con la combinación ganadora */
 let x = [];
 let o = [];
 
-turno = jugador1;
-turno2 = jugador2;
 
 /**
  * [0, 1, 2]
@@ -27,6 +39,34 @@ turno2 = jugador2;
 let tablero = document.getElementsByClassName('casilla');
 
 /**
+ * Aquí vamos a introducir los elementos de click
+ * Evento click como atributo en etiqueta.
+ * El contenido del click es una función
+ */
+for (let i = 0; i < tablero.length; i++) {
+    tablero[i].setAttribute('onclick', `pintaConsola(${i})`);
+}
+
+/**
+ * Variable turno.
+ * -    true: pintar X
+ * -    false: pintar O
+ */
+let turno = true;
+function pintaConsola(numero) {
+    if (turno) {
+        tablero[numero].textContent = 'X';
+
+        GANAR_X();
+    } else {
+        tablero[numero].textContent = 'O';
+        GANAR_O();
+    }
+    tablero[numero].removeAttribute('onclick');
+    turno = !turno;
+}
+/**
+ * Combinaciones ganadoras salvo las horizontales
  * [3, 4, 5]
  * [0, 3, 6]
  * [1, 4, 7]
@@ -44,24 +84,6 @@ let combinacionGanadora = [
     [2, 4, 6]
 ];
 
-function ponerFicha() {
-
-    /**Crear un método que elimine el atributo de onclick una vez tenga contenido */
-    if(turno){
-        /**Pinto X Utilizamos textContent
-         * div[¿?]remove.Attribute('onclick')
-         * Comprabamos si se ha ganado con funcion Ganador()
-         * turno = false;
-        */
-
-    }else {
-        /**Pinto O UTilizamos textContent
-         * div[¿?]remove.Attribute('onclick')
-         * Comprabamos si se ha ganado con funcion Ganador()
-         * turno = true;
-        */
-    }
-}
 
 function GANAR_X() {
     let actual = [];
@@ -102,24 +124,3 @@ function GANAR_O() {
         }
     }
 }
-
-/**
- * La funcion ponerFicha, pide al usuario una posicion para insertar la ficha
- * Sil la posición está vacía, inserta y en caso contrario, vuelve a pedir la posición.
- */
-function ponerFicha() {
-    /**
-     * Utilizamos el prompt para recoger la casilla del usuario
-     */
-
-    let c = prompt('Dime una casilla donde colocar la ficha');
-    if (tablero[parseInt(c)].innerHTML == '') {
-        tablero[parseInt(c)].innerHTML = 'X';
-        GANAR_X();
-    } else {
-        alert('Esta casilla está ocupada');
-        ponerFicha();
-    }
-}
-
-ponerFicha();

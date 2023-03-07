@@ -1,0 +1,14 @@
+.fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-bottom: 5px;
+}
+
+.casilla {
+    background-color: lightgreen;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    font-size: 150px;
+}
