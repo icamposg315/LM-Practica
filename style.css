@@ -1,14 +1,57 @@
-.fila {
+.container {
     display: flex;
+
+    justify-content: center;
+    align-content: center;
     flex-wrap: wrap;
     gap: 5px;
-    padding-bottom: 5px;
-}
 
+    width: 100vw;
+    height: 100vh;
+    background-image: url(R.jpeg);
+}
+.fila{
+    align-items: center;
+}
 .casilla {
     background-color: lightgreen;
-    width: 200px;
-    height: 200px;
+    text-align: center;
+    width: 150px;
+    height: 150px;
     border: 1px solid black;
     font-size: 150px;
+}
+
+.resultados{
+    display: flex;
+    height: 350px;
+    width: 200px;
+
+    background-color: navajowhite;
+    border: 1px solid black;
+    border-radius: 2%;
+   
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.score{
+    background-color: navajowhite;
+    border: 5px solid navajowhite;
+    border-style: outset;
+    height: 95%;
+    width: 95%;
+}
+
+.reinicio {
+    background-color: navajowhite;
+    width: 140px;
+    height: 50px;
+    margin: 5px;
+    text-align: center;
+
+}
+
+.reinicio:hover {
+    background-color: chocolate;
 }
